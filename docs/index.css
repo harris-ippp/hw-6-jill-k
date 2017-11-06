@@ -6,6 +6,10 @@ body { margin: 0 10%; }
 
 h1 { color: black; }
 
+h2.space {
+  padding: 10px 0px 0px 0px
+}
+
 ul.nav {
   margin: 0;
   padding: 0;
@@ -105,7 +109,3 @@ td.trcell, td.facell, td.uicell {
 td.ycell { background-color: lightgreen;   }
 td.mcell { background-color: #FFFF99;     }
 td.nocell {background-color: pink; }
-
-h2.space {
-  padding: 10px 0px 0px 0px
-}
