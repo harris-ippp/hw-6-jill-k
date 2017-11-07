@@ -5,10 +5,10 @@ import pandas as pd
 import re
 
 def clean_file(file):
-    ## From Prof. Saxon: create column headers out of the second row in df
+    # From Prof. Saxon: create column headers out of the second row in df
     header = pd.read_csv(file, nrows = 1).dropna(axis = 1)
     d = header.iloc[0].to_dict()
-    # Replace column headers and drop rows with missing data
+    # Replace column headers and drop columns with no data
     df = pd.read_csv(file, index_col = 0,
                thousands = ",", skiprows = [1])
     df.rename(inplace = True, columns = d)
@@ -18,7 +18,7 @@ def clean_file(file):
     df = df[["Democratic", "Republican", "Total Votes Cast", "Year"]]
     return df
 
-## Create list of dataframes from list of files
+# Create list of dataframes from list of files
 all_files = glob.glob("*.csv")
 dfs = []
 
@@ -41,11 +41,10 @@ def plot_county(df, county):
     cplot.set_xlabel("Election Year")
     cplot.set_ylabel("% Republican Votes")
     cplot.set_title("% Republican Votes in Presidential Elections"+" ("+county+")")
-    vals = cplot.get_yticks()
     cplot.set_ylim(ymin = 0, ymax = 100)
     return cplot
 
-## Create and save line plots for counties
+# Create and save line plots for counties
 accomack_county = plot_county(repub_share, "Accomack County")
 accomack_county.figure.savefig('accomack_county.pdf')
 
